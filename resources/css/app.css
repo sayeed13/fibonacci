@@ -130,3 +130,35 @@
 .single-thumbnail-item {
     height: 80px;
 }
+
+.vertical-search-form > form {
+    display: block;
+}
+
+.vertical-search-form > form > div {
+    min-width: 100%;
+    display: block;
+}
+
+.vertical-search-form > form > div > div {
+    margin-bottom: 15px;
+}
+
+.vertical-search-form .border-gray-500 {
+    display: none !important;
+}
+
+.vertical-search-form > form > .ml-5 {
+    margin-left: 10px;
+    min-width: 100%;
+    margin-bottom: 10px;
+}
+
+.vertical-search-form > form .btn {
+    margin-top: 15px;
+    min-width: 100%;
+}
+
+.vertical-search-form .w-24 {
+    width: 92%;
+}
