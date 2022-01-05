@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PropertyController;
@@ -30,9 +31,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::post('/property-inquiry/{id}', [ContactController::class, 'propertyInquiry'])->name('property-inquiry');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/properties', [DashboardController::class, 'properties'])->name('dashboard-properties');
+    Route::get('/dashboard/add_property', [DashboardController::class, 'addProperty'])->name('add-property');
+    Route::post('/dashboard/create_property', [DashboardController::class, 'createProperty'])->name('crate-property');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+
 
 require __DIR__ . '/auth.php';

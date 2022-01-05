@@ -162,3 +162,7 @@
 .vertical-search-form .w-24 {
     width: 92%;
 }
+
+.fibonacci-input {
+    @apply w-full border-gray-400 block;
+}

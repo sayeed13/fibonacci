@@ -16,11 +16,14 @@ class PropertyFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(),
-            'overview' => $this->faker->paragraph(),
+            'name_tr' => $this->faker->sentence(),
+            'overview' => $this->faker->sentence(),
+            'overview_tr' => $this->faker->sentence(),
             'bedrooms' => rand(1, 5),
             'bathrooms' => rand(1, 3),
             'why_buy' => $this->faker->paragraph(),
             'description' => $this->faker->paragraph(),
+            'description_tr' => $this->faker->paragraph(),
             'price' => rand(100000, 500000),
             'saleOrRent' => rand(0, 1),
             'type' => rand(0, 2),

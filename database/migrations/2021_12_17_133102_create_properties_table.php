@@ -16,11 +16,14 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('name_tr');
             $table->string('overview');
+            $table->string('overview_tr');
             $table->string('bedrooms')->nullable();
             $table->string('bathrooms')->nullable();
             $table->longText('why_buy');
             $table->longText('description');
+            $table->longText('description_tr');
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('saleOrRent')->default('1')->comment('0=rent, 1=sale');
             $table->unsignedBigInteger('type')->default('1')->comment('0=land, 1=apartment, 2=villa');
