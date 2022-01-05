@@ -164,6 +164,12 @@
                 <div class="px-4 py-5 text-left bg-gray-300 my-5">
                     <h1 class="text-2xl font-normal leading-none mb-5">Enquire about this property</h1>
 
+                    @if(session()->has('message'))
+                    <div class="text-green-600 mb-6 p-3 bg-green-100">
+                        {{ session()->get('message') }}
+                    </div>
+                    @endif
+
                     <form action="{{ route('property-inquiry', $property->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
@@ -213,11 +219,6 @@
                                     class="fa fa-commenting mr-2"></i>Request
                                 Details</button>
 
-                            @if(session()->has('message'))
-                            <div class="text-red-600">
-                                {{ session()->get('message') }}
-                            </div>
-                            @endif
                         </div>
 
                     </form>
