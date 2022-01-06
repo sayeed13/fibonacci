@@ -36,6 +36,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/properties', [DashboardController::class, 'properties'])->name('dashboard-properties');
     Route::get('/dashboard/add_property', [DashboardController::class, 'addProperty'])->name('add-property');
     Route::post('/dashboard/create_property', [DashboardController::class, 'createProperty'])->name('crate-property');
+
+
+    Route::get('/dashboard/edit_property/{id}', [DashboardController::class, 'editProperty'])->name('edit-property');
 });
 
 
