@@ -14,8 +14,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <form action="{{ route('crate-property') }}" method="POST"
-                    class="p-6 bg-white border-b border-gray-200">
+                <form action="{{ route('crate-property') }}" method="POST" class="p-6 bg-white border-b border-gray-200"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="flex -mx-4 mb-2">
                         <div class="flex-1 px-2">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="flex-1 px-2">
                             <label for="featured_image">Feature Image</label>
-                            <input class="fibonacci-input" type="file" id="featured_image">
+                            <input class="fibonacci-input" type="file" id="featured_image" name="featured_image">
                             @error('featured_image')
                             <div class=" text-red-600">{{ $message }}
                             </div>
@@ -61,7 +61,8 @@
                             <select class="fibonacci-input" name="location_id" id="location_id">
                                 <option value="">Select Location</option>
                                 @foreach ($locations as $location)
-                                <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                <option {{old('location_id')==$location->id ? 'selected="selected"' : ''}} value="{{
+                                    $location->id }}">{{ $location->name }}</option>
                                 @endforeach
                             </select>
                             @error('location_id')
@@ -72,8 +73,8 @@
                             <label for="saleOrRent">For</label>
                             <select class="fibonacci-input" name="saleOrRent" id="saleOrRent">
                                 <option value="">Select</option>
-                                <option value="0">Rent</option>
-                                <option value="1">Sale</option>
+                                <option {{old('saleOrRent')=='0' ? 'selected="selected"' : '' }} value="0">Rent</option>
+                                <option {{old('saleOrRent')=='1' ? 'selected="selected"' : '' }} value="1">Sale</option>
                             </select>
                             @error('saleOrRent')
                             <div class="text-red-600">{{ $message }}</div>
@@ -83,9 +84,9 @@
                             <label for="type">Type</label>
                             <select class="fibonacci-input" name="type" id="type">
                                 <option value="">Select Type</option>
-                                <option value="0">Land</option>
-                                <option value="1">Apartment</option>
-                                <option value="2">Villa</option>
+                                <option {{old('type')=='0' ? 'selected="selected"' : '' }} value="0">Land</option>
+                                <option {{old('type')=='1' ? 'selected="selected"' : '' }} value="1">Apartment</option>
+                                <option {{old('type')=='2' ? 'selected="selected"' : '' }} value="2">Villa</option>
                             </select>
                             @error('type')
                             <div class="text-red-600">{{ $message }}</div>
@@ -95,11 +96,11 @@
                             <label for="bedrooms">Bedrooms</label>
                             <select class="fibonacci-input" name="bedrooms" id="bedrooms">
                                 <option value="">Select Bedrooms</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option {{old('bedrooms')=='1' ? 'selected="selected"' : '' }} value="1">1</option>
+                                <option {{old('bedrooms')=='2' ? 'selected="selected"' : '' }} value="2">2</option>
+                                <option {{old('bedrooms')=='3' ? 'selected="selected"' : '' }} value="3">3</option>
+                                <option {{old('bedrooms')=='4' ? 'selected="selected"' : '' }} value="4">4</option>
+                                <option {{old('bedrooms')=='5' ? 'selected="selected"' : '' }} value="5">5</option>
                             </select>
                             @error('bedrooms')
                             <div class="text-red-600">{{ $message }}</div>
@@ -109,11 +110,11 @@
                             <label for="bathrooms">bathrooms</label>
                             <select class="fibonacci-input" name="bathrooms" id="bathrooms">
                                 <option value="">Select Bathrooms</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option {{old('bathrooms')=='1' ? 'selected="selected"' : '' }} value="1">1</option>
+                                <option {{old('bathrooms')=='2' ? 'selected="selected"' : '' }} value="2">2</option>
+                                <option {{old('bathrooms')=='3' ? 'selected="selected"' : '' }} value="3">3</option>
+                                <option {{old('bathrooms')=='4' ? 'selected="selected"' : '' }} value="4">4</option>
+                                <option {{old('bathrooms')=='5' ? 'selected="selected"' : '' }} value="5">5</option>
                             </select>
                             @error('bathrooms')
                             <div class="text-red-600">{{ $message }}</div>

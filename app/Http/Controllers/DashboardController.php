@@ -37,7 +37,7 @@ class DashboardController extends Controller
             'description_tr' => 'required',
             'price' => 'required',
             'location_id' => 'required',
-            'featured_image' => '',
+            'featured_image' => 'required|image',
             'bathrooms' => 'integer',
             'bedrooms' => 'integer',
             'saleOrRent' => 'integer',
@@ -53,7 +53,17 @@ class DashboardController extends Controller
         $property->description = $request->description;
         $property->description_tr = $request->description_tr;
         $property->price = $request->price;
-        $property->featured_image = 'pending';
+
+        // Set File Name
+        $featured_single_image = time() . '-' . $request->featured_image->getClientOriginalName();
+
+        //Store File
+        $request->featured_image->storeAs('public/uploads', $featured_single_image);
+
+        // Use File
+        $property->featured_image = $featured_single_image;
+
+
         $property->location_id = $request->location_id;
         $property->bathrooms = $request->bathrooms;
         $property->bedrooms = $request->bedrooms;
