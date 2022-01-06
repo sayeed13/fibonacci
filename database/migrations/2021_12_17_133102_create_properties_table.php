@@ -19,9 +19,9 @@ class CreatePropertiesTable extends Migration
             $table->string('name_tr');
             $table->string('overview');
             $table->string('overview_tr');
-            $table->string('bedrooms')->nullable();
-            $table->string('bathrooms')->nullable();
-            $table->longText('why_buy');
+            $table->unsignedBigInteger('bedrooms')->nullable();
+            $table->unsignedBigInteger('bathrooms')->nullable();
+            $table->longText('why_buy')->nullable();
             $table->longText('description');
             $table->longText('description_tr');
             $table->unsignedBigInteger('price');
