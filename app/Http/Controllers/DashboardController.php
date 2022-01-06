@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Models\Media;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,7 @@ class DashboardController extends Controller
             'price' => 'required',
             'location_id' => 'required',
             'featured_image' => 'required|image',
+            'gallery_images' => 'required',
             'bathrooms' => 'integer',
             'bedrooms' => 'integer',
             'saleOrRent' => 'integer',
@@ -70,6 +72,17 @@ class DashboardController extends Controller
         $property->saleOrRent = $request->saleOrRent;
         $property->type = $request->type;
         $property->save();
+
+        //multiple File Store
+        foreach ($request->gallery_images as $image) {
+            $gallery_image_name = time() . '-' . $image->getClientOriginalName();
+            $image->storeAs('public/uploads', $gallery_image_name);
+            $media = new Media();
+            $media->name = $gallery_image_name;
+
+            $media->property_id = $property->id;
+            $media->save();
+        }
 
         return redirect(route('dashboard-properties'))->with('message', 'Your Property has been publish successfully!');;
     }

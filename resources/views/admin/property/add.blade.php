@@ -48,8 +48,18 @@
                         </div>
                         <div class="flex-1 px-2">
                             <label for="featured_image">Feature Image</label>
-                            <input class="fibonacci-input" type="file" id="featured_image" name="featured_image">
+                            <input class="fibonacci-input" type="file" id="featured_image" name="featured_image"
+                                required>
                             @error('featured_image')
+                            <div class=" text-red-600">{{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="flex-1 px-2">
+                            <label for="gallery_images">Gallery Images</label>
+                            <input class="fibonacci-input" type="file" id="gallery_images" name="gallery_images[]"
+                                multiple>
+                            @error('gallery_images')
                             <div class=" text-red-600">{{ $message }}
                             </div>
                             @enderror
